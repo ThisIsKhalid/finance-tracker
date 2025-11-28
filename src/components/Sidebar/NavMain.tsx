@@ -1,6 +1,11 @@
 "use client";
 
-import { ChevronRight, type LucideIcon } from "lucide-react";
+import {
+  ChevronRight,
+  Landmark,
+  LayoutDashboard,
+  type LucideIcon,
+} from "lucide-react";
 
 import {
   Collapsible,
@@ -9,7 +14,6 @@ import {
 } from "@/components/ui/collapsible";
 import {
   SidebarGroup,
-  SidebarGroupLabel,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
@@ -17,6 +21,8 @@ import {
   SidebarMenuSubButton,
   SidebarMenuSubItem,
 } from "@/components/ui/sidebar";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export function NavMain({
   items,
@@ -32,12 +38,40 @@ export function NavMain({
     }[];
   }[];
 }) {
+  const pathname = usePathname();
+  console.log("current pathname", pathname)
+
+
+
   return (
     <SidebarGroup>
-      <SidebarGroupLabel className="text-muted-foreground">
-        Platform
-      </SidebarGroupLabel>
       <SidebarMenu>
+        <SidebarMenuItem>
+          <SidebarMenuButton
+            tooltip="Dashboard"
+            asChild
+            className="data-[active=true]:bg-primary data-[active=true]:text-primary-foreground"
+            isActive={pathname === "/dashboard"}
+          >
+            <Link href="/dashboard">
+              <LayoutDashboard />
+              <span>Dashboard</span>
+            </Link>
+          </SidebarMenuButton>
+        </SidebarMenuItem>
+        <SidebarMenuItem>
+          <SidebarMenuButton
+            tooltip="Accounts"
+            asChild
+            className="data-[active=true]:bg-primary data-[active=true]:text-primary-foreground"
+            isActive={pathname === "/accounts"}
+          >
+            <Link href="/accounts">
+              <Landmark />
+              <span>Accounts</span>
+            </Link>
+          </SidebarMenuButton>
+        </SidebarMenuItem>
         {items.map((item) => (
           <Collapsible
             key={item.title}
