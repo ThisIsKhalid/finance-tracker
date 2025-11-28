@@ -17,10 +17,10 @@ export function TransactionsHeader({
         Manage and track all your income and expenses
       </p>
 
-      <div className="flex items-center justify-between">
-        <div className="flex gap-4">
-          <div className="rounded-lg border border-border bg-card p-4">
-            <p className="text-sm text-muted-foreground">This Month</p>
+      <div className="flex items-center justify-between flex-col sm:flex-row gap-4">
+        <div className="flex w-full sm:w-auto flex-col sm:flex-row gap-4">
+          <div className="flex-1 rounded-lg border border-border bg-card p-4">
+            <p className="flex-1 text-sm text-muted-foreground">This Month</p>
             <p className="text-2xl font-bold text-accent">$1,665.99</p>
           </div>
           <div className="rounded-lg border border-border bg-card p-4">
@@ -30,7 +30,7 @@ export function TransactionsHeader({
         </div>
         <Button
           onClick={onAddTransaction}
-          className="flex items-center gap-2 bg-primary text-primary-foreground hover:bg-primary/90"
+          className="flex items-center gap-2 bg-primary text-primary-foreground hover:bg-primary/90 w-full sm:w-auto"
           size="lg"
         >
           <Plus className="h-5 w-5" />

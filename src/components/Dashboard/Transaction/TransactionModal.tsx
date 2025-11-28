@@ -50,33 +50,38 @@ export function TransactionModal({
   });
 
   useEffect(() => {
-    if (isEditing && initialData) {
-      setFormData({
-        id: initialData.id,
-        type: initialData.type,
-        amount: initialData.amount.toString(),
-        description: initialData.description,
-        category: initialData.category,
-        date: initialData.date,
-        account: initialData.account,
-        toAccount: initialData.toAccount || "Savings Account",
-        status: initialData.status,
-        paymentMethod: initialData.paymentMethod || "Card",
-      });
-    } else {
-      setFormData({
-        id: "",
-        type: "Expense",
-        amount: "",
-        description: "",
-        category: "Shopping",
-        date: new Date().toISOString().split("T")[0],
-        account: "Checking Account",
-        toAccount: "Savings Account",
-        status: "Pending",
-        paymentMethod: "Card",
-      });
-    }
+    // Defer the state update to avoid synchronous setState inside the effect
+    const timer = setTimeout(() => {
+      if (isEditing && initialData) {
+        setFormData({
+          id: initialData.id,
+          type: initialData.type,
+          amount: initialData.amount.toString(),
+          description: initialData.description,
+          category: initialData.category,
+          date: initialData.date,
+          account: initialData.account,
+          toAccount: initialData.toAccount || "Savings Account",
+          status: initialData.status,
+          paymentMethod: initialData.paymentMethod || "Card",
+        });
+      } else {
+        setFormData({
+          id: "",
+          type: "Expense",
+          amount: "",
+          description: "",
+          category: "Shopping",
+          date: new Date().toISOString().split("T")[0],
+          account: "Checking Account",
+          toAccount: "Savings Account",
+          status: "Pending",
+          paymentMethod: "Card",
+        });
+      }
+    }, 0);
+
+    return () => clearTimeout(timer);
   }, [isOpen, isEditing, initialData]);
 
   const categories = [
