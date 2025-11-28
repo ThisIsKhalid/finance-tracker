@@ -141,6 +141,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
     <Sidebar
       collapsible="icon"
+      variant="floating"
       className="bg-sidebar text-sidebar-foreground border-r border-sidebar-border"
       {...props}
     >
@@ -151,7 +152,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
               <DollarSign className="size-5" />
             </div>
             <div className="grid flex-1 text-left text-md leading-tight font-mono font-bold ml-2">
-              Finance Tracker
+              <span className="truncate font-medium"> Finance Tracker </span>
             </div>
           </SidebarMenuItem>
         </SidebarMenu>

@@ -1,14 +1,17 @@
 import { AppSidebar } from "@/components/Sidebar/AppSidebar";
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
+import { SiteHeader } from "@/components/Sidebar/SiteHeader";
+import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <SidebarProvider>
-      <AppSidebar />
-      <main className="bg-background text-foreground w-full">
-        <SidebarTrigger />
-        {children}
-      </main>
+      <AppSidebar variant="inset" />
+      <SidebarInset>
+        <SiteHeader />
+        <div className="@container/main flex flex-1 flex-col p-4 md:p-6">
+          {children}
+        </div>
+      </SidebarInset>
     </SidebarProvider>
   );
 }
