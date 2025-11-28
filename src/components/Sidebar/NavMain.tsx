@@ -39,9 +39,6 @@ export function NavMain({
   }[];
 }) {
   const pathname = usePathname();
-  console.log("current pathname", pathname)
-
-
 
   return (
     <SidebarGroup>
@@ -51,9 +48,9 @@ export function NavMain({
             tooltip="Dashboard"
             asChild
             className="data-[active=true]:bg-primary data-[active=true]:text-primary-foreground"
-            isActive={pathname === "/dashboard"}
+            isActive={pathname === "/overview"}
           >
-            <Link href="/dashboard">
+            <Link href="/overview">
               <LayoutDashboard />
               <span>Dashboard</span>
             </Link>
