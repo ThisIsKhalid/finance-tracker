@@ -1,6 +1,7 @@
 "use client";
 
 import {
+  BadgeDollarSign,
   ChevronRight,
   Landmark,
   LayoutDashboard,
@@ -53,6 +54,19 @@ export function NavMain({
             <Link href="/overview">
               <LayoutDashboard />
               <span>Dashboard</span>
+            </Link>
+          </SidebarMenuButton>
+        </SidebarMenuItem>
+        <SidebarMenuItem>
+          <SidebarMenuButton
+            tooltip="Transactions"
+            asChild
+            className="data-[active=true]:bg-primary data-[active=true]:text-primary-foreground"
+            isActive={pathname === "/transactions"}
+          >
+            <Link href="/transactions">
+              <BadgeDollarSign />
+              <span>Transactions</span>
             </Link>
           </SidebarMenuButton>
         </SidebarMenuItem>
