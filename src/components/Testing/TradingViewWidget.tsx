@@ -12,6 +12,7 @@ interface WidgetConfig {
 interface TradingViewWidgetProps {
   symbols: string[];
   colorTheme?: "light" | "dark";
+  isTransparent?: boolean;
 }
 
 function SingleWidget({ config }: { config: WidgetConfig }) {
@@ -39,7 +40,10 @@ function SingleWidget({ config }: { config: WidgetConfig }) {
   }, [config]);
 
   return (
-    <div className="tradingview-widget-container" ref={container}>
+    <div
+      className="tradingview-widget-container border border-gray-300 rounded-lg p-4 bg-slate-900"
+      ref={container}
+    >
       <div className="tradingview-widget-container__widget"></div>
     </div>
   );
@@ -48,6 +52,7 @@ function SingleWidget({ config }: { config: WidgetConfig }) {
 function TradingViewWidget({
   symbols,
   colorTheme = "dark",
+  isTransparent = true,
 }: TradingViewWidgetProps) {
   return (
     <div className="flex  gap-4">
@@ -57,10 +62,11 @@ function TradingViewWidget({
           config={{
             symbol,
             colorTheme,
-            isTransparent: false,
+            isTransparent,
             locale: "en",
             width: "100%",
           }}
+          
         />
       ))}
     </div>
