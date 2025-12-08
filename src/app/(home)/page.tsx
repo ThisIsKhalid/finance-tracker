@@ -18,16 +18,60 @@ export default function Home() {
           <Button>Get Started</Button>
         </div>
 
-        <div>
-          <TradingViewWidget
-            symbols={[
-              "NASDAQ:AAPL",
-              "TVC:GOLD",
-              "BINANCE:BTCUSDT",
-              "NASDAQ:TSLA",
-            ]}
-            colorTheme="dark"
-          />
+        <div className="space-y-8 w-full">
+          <div>
+            <h2 className="text-2xl font-bold text-white mb-4">Commodities</h2>
+            <TradingViewWidget
+              symbols={["FOREXCOM:XAUUSD", "FOREXCOM:XAGUSD", "TVC:USOIL"]}
+              colorTheme="dark"
+            />
+          </div>
+
+          <div>
+            <h2 className="text-2xl font-bold text-white mb-4">Forex</h2>
+            <TradingViewWidget
+              symbols={[
+                "FOREXCOM:EURUSD",
+                "FOREXCOM:GBPUSD",
+                "FOREXCOM:AUDUSD",
+                "FOREXCOM:NZDUSD",
+                "FOREXCOM:USDJPY",
+                "FOREXCOM:USDCHF",
+                "FOREXCOM:USDCAD",
+              ]}
+              colorTheme="dark"
+            />
+          </div>
+
+          <div>
+            <h2 className="text-2xl font-bold text-white mb-4">Tech Stocks</h2>
+            <TradingViewWidget
+              symbols={[
+                "NASDAQ:AAPL",
+                "NASDAQ:MSFT",
+                "NASDAQ:AMZN",
+                "NASDAQ:META",
+                "NASDAQ:NVDA",
+                "NASDAQ:TSLA",
+              ]}
+              colorTheme="dark"
+            />
+          </div>
+
+          <div>
+            <h2 className="text-2xl font-bold text-white mb-4">Crypto</h2>
+            <TradingViewWidget
+              symbols={[
+                "BINANCE:BTCUSDT",
+                "BINANCE:ETHUSDT",
+                "BINANCE:LTCUSDT",
+                "BINANCE:XRPUSDT",
+                "BINANCE:SOLUSDT",
+                "BINANCE:ADAUSDT",
+              ]}
+              colorTheme="dark"
+            />
+          </div>
         </div>
       </Container>
     </div>
